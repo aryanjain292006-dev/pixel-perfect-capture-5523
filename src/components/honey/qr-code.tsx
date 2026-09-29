@@ -18,7 +18,7 @@ export function QrCode({ value, size = 21, className }: { value: string; size?: 
         for (let c = 0; c < 7; c += 1) {
           const edge = r === 0 || r === 6 || c === 0 || c === 6;
           const core = r >= 2 && r <= 4 && c >= 2 && c <= 4;
-          grid[r0 + r][c0 + c] = edge || core;
+          grid[r0 + r]![c0 + c] = edge || core;
         }
     };
     finder(0, 0);

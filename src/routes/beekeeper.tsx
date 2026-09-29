@@ -79,16 +79,16 @@ export const Route = createFileRoute("/beekeeper")({
 
 function BeekeeperDashboard() {
   const { hives, batches, recordHarvest, advance, dispatchBatch, beekeepers } = useHoney();
-  const [hiveId, setHiveId] = useState(hives[0].id);
+  const [hiveId, setHiveId] = useState(hives[0]!.id);
   const [alertOpen, setAlertOpen] = useState(true);
   const [qrBatch, setQrBatch] = useState<Batch | null>(null);
-  const [harvest, setHarvest] = useState({ hiveId: hives[0].id, location: "Barabanki, Uttar Pradesh", kg: "20" });
+  const [harvest, setHarvest] = useState({ hiveId: hives[0]!.id, location: "Barabanki, Uttar Pradesh", kg: "20" });
   const [dispatchTarget, setDispatchTarget] = useState<{ batchId: string; store: string }>({
     batchId: "",
-    store: STORES[0],
+    store: STORES[0]!,
   });
 
-  const hive = hives.find((h) => h.id === hiveId) ?? hives[0];
+  const hive = hives.find((h) => h.id === hiveId) ?? hives[0]!;
   const myBatches = batches;
   const packed = myBatches.filter((b) => b.status === "packed");
 
@@ -100,7 +100,7 @@ function BeekeeperDashboard() {
       return;
     }
     const b = recordHarvest({
-      beekeeperId: beekeepers[0].id,
+      beekeeperId: beekeepers[0]!.id,
       hiveId: harvest.hiveId,
       location: harvest.location,
       harvestKg: kg,
@@ -113,7 +113,7 @@ function BeekeeperDashboard() {
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-honey-deep">
-            Beekeeper · {beekeepers[0].name} · {beekeepers[0].id}
+            Beekeeper · {beekeepers[0]!.name} · {beekeepers[0]!.id}
           </p>
           <h1 className="mt-1 text-3xl font-semibold sm:text-4xl">Smart hive hub</h1>
           <p className="mt-2 text-muted-foreground">

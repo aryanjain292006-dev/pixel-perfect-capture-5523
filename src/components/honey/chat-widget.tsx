@@ -28,7 +28,7 @@ export function ChatWidget() {
 
   const send = (text: string) => {
     if (!text.trim()) return;
-    const reply = CANNED[msgs.filter((m) => m.from === "user").length % CANNED.length];
+    const reply = CANNED[msgs.filter((m) => m.from === "user").length % CANNED.length]!;
     setMsgs((prev) => [...prev, { from: "user", text }, { from: "bot", text: reply }]);
     setInput("");
   };

@@ -62,7 +62,7 @@ function ConsumerPortal() {
   const simulateScan = () => {
     setScanning(true);
     setTimeout(() => {
-      const sample = batches.find((b) => b.status === "available") ?? batches[0];
+      const sample = batches.find((b) => b.status === "available") ?? batches[0]!;
       setScanning(false);
       setCode(sample.scratchCode);
       verify(sample.scratchCode);

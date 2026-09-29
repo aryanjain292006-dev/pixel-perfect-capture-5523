@@ -328,7 +328,7 @@ export function HoneyProvider({ children }: { children: ReactNode }) {
 
   const recordHarvest: Ctx["recordHarvest"] = useCallback(
     (input) => {
-      const keeper = beekeepers.find((b) => b.id === input.beekeeperId) ?? beekeepers[0];
+      const keeper = beekeepers.find((b) => b.id === input.beekeeperId) ?? beekeepers[0]!;
       const batch: Batch = {
         id: `HC-BATCH-2026-0${220 + Math.floor(Math.random() * 79)}`,
         beekeeperId: keeper.id,
@@ -336,7 +336,7 @@ export function HoneyProvider({ children }: { children: ReactNode }) {
         hiveId: input.hiveId,
         location: input.location,
         harvestKg: input.harvestKg,
-        floralSource: input.floralSource ?? FLORAL[Math.floor(Math.random() * FLORAL.length)],
+        floralSource: input.floralSource ?? FLORAL[Math.floor(Math.random() * FLORAL.length)]!,
         scratchCode: scratch(),
         status: "harvested",
         events: [
