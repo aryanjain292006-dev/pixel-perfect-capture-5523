@@ -38,8 +38,9 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  component: ConsumerPortal;
+  component: ConsumerPortal,
 });
+
 
 function ConsumerPortal() {
   const { findByCode, batches } = useHoney();
